@@ -1,0 +1,104 @@
+:root {
+  /* Background colors */
+  --background-color-dark: #262626;
+  --background-color-light: #fff;
+  --background-color-orangered: #ff4500;
+  /* Text colors */
+  --text-color-dark: #262626;
+  --text-color-light: #fff;
+  --text-color-green: #90ee90;
+  /* Shadow */
+  /* Padding */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  width: 100%;
+  display: block;
+  opacity: 1;
+}
+
+li {
+  list-style: none;
+  display: inline-block;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.5;
+  margin: 0.5em 0;
+  text-align: center;
+}
+
+p {
+  font-size: 1.5em;
+  text-align: center;
+  padding: 1rem 2rem;
+}
+
+/* Main styling */
+
+.logo > h2 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.perant-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.generate-btn {
+  border: none;
+  background-color: inherit;
+  font-size: 1.5rem;
+  font-weight: 500;
+  background-color: #90ee90;
+  border-radius: 2rem;
+  padding: 1rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+img {
+  width: auto;
+  height: 400px;
+}
+
+.list {
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
