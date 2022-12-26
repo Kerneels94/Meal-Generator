@@ -1,7 +1,13 @@
 // Get dom elements
 
-const generateButton = document.querySelector('[data-key="generate"]');
+const mealHeading = document.querySelector('[data-key="meal-heading"]');
+const description = document.querySelector('[data-key="description"]');
+const duration = document.querySelector('[data-key="duration"]');
+const listItem = document.querySelector('[data-key="list-item"]');
+const image = document.querySelector('[data-key="image"]');
+
 const mealContainer = document.querySelector(".container");
+const generateButton = document.querySelector('[data-key="generate"]');
 
 /*
 Create object to store the data of the meal
@@ -40,56 +46,32 @@ const meal = [
   },
 ];
 
+// Counter
 let counter = 0;
 
 // Functions
-const firstMeal = () => {
-  // Get the first item of the array
-  let firstItem = meal[counter];
-  // Update meal container
-  mealContainer.innerHTML = `<div class="container">
-          <img src="${firstItem.image}" alt="Image" data-key="image" />
-          <h2 data-key="meal-heading">${firstItem.heading}</h2>
-          <p data-key="description">${firstItem.description}</p>
-          <span data-key="duration" class="duration">Duration: ${firstItem.duration}</span>
-          <ul class="list">
-            <li data-key="list-item">${firstItem.ingredients[0]}</li>
-            <li data-key="list-item">${firstItem.ingredients[1]}</li>
-            <li data-key="list-item">${firstItem.ingredients[2]}</li>
-            <li data-key="list-item">${firstItem.ingredients[3]}</li>
-            <li data-key="list-item">${firstItem.ingredients[4]}</li>
-            <li data-key="list-item">${firstItem.ingredients[5]}</li>
-          </ul>
-        </div>`;
-};
 
-// Generate random meal
-const generateRandomMeal = () => {
-  //Loop through the meal array
-  let randomMeal = meal.map((item) => {
-    return `
-      <div class="container">
-            <img src="${item.image}" alt="Image" data-key="image" />
-            <h2 data-key="meal-heading">${item.heading}</h2>
-            <p data-key="description">${item.description}</p>
-            <span data-key="duration" class="duration">${item.duration}</span>
-            <ul class="list">
-               <li data-key="list-item">${item.ingredients[0]}</li>
-            <li data-key="list-item">${item.ingredients[1]}</li>
-            <li data-key="list-item">${item.ingredients[2]}</li>
-            <li data-key="list-item">${item.ingredients[3]}</li>
-            <li data-key="list-item">${item.ingredients[4]}</li>
-            <li data-key="list-item">${item.ingredients[5]}</li>
-            </ul>
-          </div>
-      `;
-  });
-  //   add array elements together
-  randomMeal = randomMeal.join("");
-  //   Update the innerHTML of the mealContainer
-  mealContainer.innerHTML = randomMeal;
-};
+function generateMeal(mealItem) {
+  let item = meal[mealItem];
+  image.src = item.image;
+  mealHeading.textContent = item.heading;
+  description.textContent = item.description;
+  duration.textContent = item.duration;
+  listItem.textContent = item.ingredients;
+}
+
+function randomMeal() {
+  counter = Math.floor(Math.random() * meal.length);
+  generateMeal(counter);
+}
 
 // EventListerners
-generateButton.addEventListener("click", generateRandomMeal);
-window.addEventListener("DOMContentLoaded", firstMeal);
+window.addEventListener("DOMContentLoaded", function () {
+  let firstItem = meal[counter];
+  image.src = firstItem.image;
+  mealHeading.textContent = firstItem.heading;
+  description.textContent = firstItem.description;
+  duration.textContent = firstItem.duration;
+  listItem.textContent = firstItem.ingredients;
+});
+generateButton.addEventListener("click", randomMeal);
